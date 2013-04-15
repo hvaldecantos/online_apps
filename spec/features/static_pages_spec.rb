@@ -6,7 +6,12 @@ describe "Static pages" do
 
     it "should have the content 'Online APPs'" do
       visit '/static_pages/home'
-      page.should have_content('Online APPs')
+      page.should have_selector('h1', text: 'Online APPs')
+    end
+
+    it "should have the title 'Home'" do
+      visit '/static_pages/home'
+      page.should have_title "Online App Container | Home"
     end
   end
 
@@ -14,7 +19,12 @@ describe "Static pages" do
 
     it "should have the content 'Help'" do
       visit '/static_pages/help'
-      page.should have_content('Help')
+      page.should have_selector('h1', text: 'Help')
+    end
+
+    it "should have the title 'Help'" do
+      visit '/static_pages/help'
+      page.should have_title "Online App Container | Help"
     end
   end
 
@@ -22,7 +32,12 @@ describe "Static pages" do
 
     it "should have the content 'About Us'" do
       visit '/static_pages/about'
-      page.should have_content('About Us')
+      page.should have_selector('h1', text: 'About Us')
+    end
+
+    it "should have the title 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_title "Online App Container | About Us"
     end
   end
 end
