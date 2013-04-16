@@ -40,4 +40,17 @@ describe "Static pages" do
       page.should have_title "Online App Container | About Us"
     end
   end
+
+  describe "Contact page" do
+
+    it "should have the content 'Contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('h1', text: 'Contact')
+    end
+
+    it "should have the title 'About Us'" do
+      visit '/static_pages/contact'
+      page.should have_title "Online App Container | Contact"
+    end
+  end
 end
