@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'support/utilities'
 
 describe "Static pages" do
 
@@ -14,60 +15,30 @@ describe "Static pages" do
     page.should have_title "Online App Container"
   end
 
+  subject { page }
+
   describe "Home page" do
-
-    it "should have the content 'Online APPs'" do
-      visit root_path
-      page.should have_selector('h1', text: 'Online APPs')
-    end
-
-    it "should have the base title" do
-      visit root_path
-      page.should have_title "Online App Container"
-    end
-
-    it "should not have a custom page title" do
-      visit root_path
-      page.should_not have_title "Online App Container | Home"
-    end
+    before { visit root_path } # to visit the root path before each exampl
+    it { should have_selector('h1', text: 'Online APPs') }
+    it { should have_title full_title("")}
+    it { should_not have_title "Online App Container | Home" }
   end
 
   describe "Help page" do
-
-    it "should have the content 'Help'" do
-      visit help_path
-      page.should have_selector('h1', text: 'Help')
-    end
-
-    it "should have the title 'Help'" do
-      visit help_path
-      page.should have_title "Online App Container | Help"
-    end
+    before { visit help_path }
+    it { should have_selector('h1', text: 'Help') }
+    it { should have_title "Online App Container | Help" }
   end
 
   describe "About page" do
-
-    it "should have the content 'About Us'" do
-      visit about_path
-      page.should have_selector('h1', text: 'About Us')
-    end
-
-    it "should have the title 'About Us'" do
-      visit about_path
-      page.should have_title "Online App Container | About Us"
-    end
+    before { visit about_path }
+    it { should have_selector('h1', text: 'About Us') }
+    it { should have_title "Online App Container | About Us" }
   end
 
   describe "Contact page" do
-
-    it "should have the content 'Contact'" do
-      visit contact_path
-      page.should have_selector('h1', text: 'Contact')
-    end
-
-    it "should have the title 'About Us'" do
-      visit contact_path
-      page.should have_title "Online App Container | Contact"
-    end
+    before { visit contact_path }
+    it { should have_selector('h1', text: 'Contact') }
+    it { should have_title "Online App Container | Contact" }
   end
 end
